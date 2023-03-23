@@ -1,0 +1,24 @@
+.app_wrapper {
+  background-color: #222226;
+  padding: 0px 20%;
+  display: grid;
+
+  grid-template-areas:
+    'h h'
+    'n c';
+
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+  min-height: 100vh;
+}
+
+.app_wrapper_component {
+  grid-area: c;
+}
+
+@media (max-width: 660px) {
+  .app_wrapper {
+    padding: 0px 0px;
+  }
+}

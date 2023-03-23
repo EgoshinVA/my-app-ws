@@ -1,0 +1,18 @@
+.selected_page {
+  font-weight: bold;
+  color: aliceblue;
+  padding: 2px;
+  border: 1px solid white;
+}
+
+.paginator {
+  margin: 10px;
+}
+
+.pageNumber {
+  padding: 2px;
+  border: 1px solid grey;
+  font-size: 16px;
+  font-weight: 600;
+  color: grey;
+}

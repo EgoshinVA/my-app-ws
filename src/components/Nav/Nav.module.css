@@ -1,0 +1,27 @@
+.nav {
+  grid-area: n;
+  background-color: #333336;
+  color: #7f7f7f;
+  height: 600px;
+  padding-top: 10px;
+  border-radius: 0.85rem;
+}
+
+.item a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 40px 20px;
+  color: #7f7f7f;
+  padding: 0px 10px 3px;
+}
+
+.item a:visited {
+  text-decoration: none;
+  color: #7f7f7f;
+}
+
+.item a.active {
+  border-radius: 0.85rem;
+  background-color: #222226;
+}

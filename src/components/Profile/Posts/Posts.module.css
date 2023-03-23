@@ -1,0 +1,39 @@
+.posts_title {
+  color: #7f7f7f;
+  font-size: 28px;
+}
+.posts_input {
+  width: calc(100% - 20px);
+  height: 50px;
+  background-color: #444446;
+  color: white;
+  border-radius: 0.85rem;
+  padding: 0px 10px;
+  outline: none;
+  border: none;
+}
+.posts_btn {
+  width: 100px;
+  height: 30px;
+  margin-top: 5px;
+  outline: none;
+  border: none;
+  border-radius: 0.85rem;
+  background-color: #444446;
+  color: white;
+}
+
+.posts_btn:hover {
+  cursor: pointer;
+  background-color: #535355;
+}
+
+.posts_block {
+  display: block;
+  justify-content: right;
+  margin-bottom: 10px;
+}
+
+.post_items {
+  margin-top: 20px;
+}
