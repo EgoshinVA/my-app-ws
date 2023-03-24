@@ -7,8 +7,7 @@ const Header = (props) => {
       <img
         src="https://www.pngmart.com/files/7/Core-PNG-Picture.png"
         className={classes.img}
-        alt="img"
-      />
+        alt="img"/>
       <div className={classes.login}>
         {props.isAuth ? (
           <div>
