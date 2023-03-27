@@ -7,10 +7,10 @@ const Post = (props) => {
       <p className={classes.desc}>{props.desc}</p>
       <div className={classes.like_block}>
         <div className={classes.likes}>Likes: {props.likes}</div>
-        <a href="">
+        <a href="##">
           <img
             className={classes.likes_img}
-            href="#"
+alt={'a'}
             src="https://png-library.net/new_gallery/9-92707_like-thumbs-up-comments-facebook-thumbs-up-icons.png"
           />
         </a>

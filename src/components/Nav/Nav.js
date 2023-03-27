@@ -15,7 +15,7 @@ const Nav = () => {
         </NavLink>
       </div>
       <div className={classes.item}>
-        <a href="#">News</a>
+        <a href="##">News</a>
       </div>
       <div className={classes.item}>
         <NavLink
@@ -28,10 +28,10 @@ const Nav = () => {
         </NavLink>
       </div>
       <div className={classes.item}>
-        <a href="#">Music</a>
+        <a href="##">Music</a>
       </div>
       <div className={classes.item}>
-        <a href="#">Settings</a>
+        <a href="##">Settings</a>
       </div>
       <div className={classes.item}>
         <NavLink
