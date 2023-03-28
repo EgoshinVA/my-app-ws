@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-app-ws/static/css/main.293a3e75.css",
-    "main.js": "/my-app-ws/static/js/main.4e3d5de1.js",
+    "main.js": "/my-app-ws/static/js/main.a8681d0d.js",
     "static/css/438.97d619d1.chunk.css": "/my-app-ws/static/css/438.97d619d1.chunk.css",
     "static/js/438.b60734b4.chunk.js": "/my-app-ws/static/js/438.b60734b4.chunk.js",
     "static/css/18.70388f98.chunk.css": "/my-app-ws/static/css/18.70388f98.chunk.css",
@@ -10,7 +10,7 @@
     "static/media/1474.gif": "/my-app-ws/static/media/1474.46f8b8381651fe992e3b.gif",
     "index.html": "/my-app-ws/index.html",
     "main.293a3e75.css.map": "/my-app-ws/static/css/main.293a3e75.css.map",
-    "main.4e3d5de1.js.map": "/my-app-ws/static/js/main.4e3d5de1.js.map",
+    "main.a8681d0d.js.map": "/my-app-ws/static/js/main.a8681d0d.js.map",
     "438.97d619d1.chunk.css.map": "/my-app-ws/static/css/438.97d619d1.chunk.css.map",
     "438.b60734b4.chunk.js.map": "/my-app-ws/static/js/438.b60734b4.chunk.js.map",
     "18.70388f98.chunk.css.map": "/my-app-ws/static/css/18.70388f98.chunk.css.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.293a3e75.css",
-    "static/js/main.4e3d5de1.js"
+    "static/js/main.a8681d0d.js"
   ]
 }
