@@ -19,6 +19,7 @@ let Users = (props) => {
           id={user.id}
           name={user.name}
           status={user.status}
+          photo={user.photos.small}
           followed={
             user.followed ? (
               <button

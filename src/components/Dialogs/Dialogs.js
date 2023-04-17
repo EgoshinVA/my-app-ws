@@ -2,20 +2,18 @@ import classes from './Dialogs.module.css';
 import Interlocutor from './Interlocutor/Interlocutor';
 import Messages from './Messages/Messages';
 import React from 'react';
-import { Field, Form, reduxForm } from 'redux-form';
-import {
-  requiredField,
-  maxLengthCreator,
-} from '../../utils/validators/validators';
-import { Textarea } from '../common/Controls/FormsControls';
+import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../common/Controls/FormsControls";
+import {requiredField} from "../../utils/validators/validators";
+
 
 const Dialogs = (props) => {
   let dialogElements = props.dialogs.map((user) => (
-    <Interlocutor name={user.name} id={user.id} />
+    <Interlocutor key={user.id} name={user.name} id={user.id} />
   ));
 
   let messagesElements = props.messages.map((message) => (
-    <Messages name={message.id} message={message.message} />
+    <Messages key={message.id} name={message.id} message={message.message} />
   ));
 
   const addNewMessage = (values) => {
@@ -35,20 +33,20 @@ const Dialogs = (props) => {
 
 const AddMessageForm = (props) => {
   return (
-    <Form onSubmit={props.handleSubmit}>
+    <form onSubmit={props.handleSubmit}>
       <div>
         <Field
           component={Textarea}
           className={classes.input}
           name="newMessageBody"
           placeholder="Your message..."
-          validate={[requiredField, maxLengthCreator(30)]}
+          validate={[requiredField]}
         />
       </div>
       <div>
         <button className={classes.btn}>Send</button>
       </div>
-    </Form>
+    </form>
   );
 };
 

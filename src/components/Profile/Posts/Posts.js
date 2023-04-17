@@ -1,16 +1,13 @@
 import classes from './Posts.module.css';
 import Post from './Post/Post';
 import React from 'react';
-import { Field, Form, reduxForm } from 'redux-form';
-import {
-  requiredField,
-  maxLengthCreator,
-} from '../../../utils/validators/validators';
+import { Field, reduxForm } from 'redux-form';
 import { Textarea } from '../../common/Controls/FormsControls';
+import {maxLengthCreator, requiredField} from "../../../utils/validators/validators";
 
 const Posts = (props) => {
   let postElements = props.post.map((post) => (
-    <Post desc={post.desc} likes={post.likes} />
+    <Post key={post.id} desc={post.desc} likes={post.likes} />
   ));
 
   const addNewPost = (values) => {
@@ -30,20 +27,20 @@ const Posts = (props) => {
 
 const AddNewPostForm = (props) => {
   return (
-    <Form onSubmit={props.handleSubmit}>
+    <form onSubmit={props.handleSubmit}>
       <Field
         component={Textarea}
         name="newPostInput"
         placeholder="Your news..."
         className={classes.posts_input}
-        validate={[requiredField, maxLengthCreator(30)]}
+        validate={[requiredField]}
       />
       <button className={classes.posts_btn}>Send</button>
-    </Form>
+    </form>
   );
 };
 
-const AddNewPostFormRedux = reduxForm({ form: 'AddNewPostForm' })(
+const AddNewPostFormRedux = reduxForm({form: 'AddNewPostForm'})(
   AddNewPostForm
 );
 

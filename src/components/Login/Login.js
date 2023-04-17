@@ -1,9 +1,5 @@
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import {
-  requiredField,
-  maxLengthCreator,
-} from './../../utils/validators/validators';
 import { Input } from './../common/Controls/FormsControls';
 import { login } from './../../redux/auth-reducer';
 import { Navigate } from 'react-router-dom';
@@ -33,7 +29,7 @@ const LoginForm = (props) => {
           placeholder={'Email'}
           component={Input}
           name={'email'}
-          validate={[requiredField, maxLengthCreator(30)]}
+
         />
       </div>
       <div>
@@ -41,7 +37,6 @@ const LoginForm = (props) => {
           placeholder={'Password'}
           component={Input}
           name={'password'}
-          validate={[requiredField, maxLengthCreator(30)]}
           type={'password'}
         />
       </div>

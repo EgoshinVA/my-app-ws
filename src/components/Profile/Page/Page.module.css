@@ -9,6 +9,10 @@
   display: flex;
 }
 
+.page_photo{
+  display: block;
+}
+
 .info {
   color: #7f7f7f;
   font-weight: 400;
@@ -24,4 +28,12 @@
 .info_item {
   margin-top: 2px;
   margin-bottom: 0px;
+}
+
+.contact{
+  padding-left: 10px;
+}
+
+b{
+  color: #7f7f7f;
 }

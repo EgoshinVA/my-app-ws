@@ -38,6 +38,21 @@ export const updateStatus = (status) => {
   return instance.put(`profile/status/`, { status });
 };
 
+export const updatePhoto = (file) => {
+  const formData = new FormData()
+  formData.append('image', file)
+  return instance.put(`profile/photo/`, formData, {
+    headers:{
+      'Content-Type' : 'multipart/form-data'
+    }
+  });
+}
+export const updateProfile = (profile) => {
+  return instance.put(`profile/`,  profile );
+};
+
+
+
 export const authAPI = {
   me() {
     return instance.get(`auth/me`).then((response) => response.data);

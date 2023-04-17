@@ -31,6 +31,7 @@ let Paginator = (props) => {
         )
         .map((p) => (
           <span
+              key={p}
             className={
               (props.currentPage === p && classes.selected_page) ||
               classes.pageNumber

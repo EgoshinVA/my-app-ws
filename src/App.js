@@ -28,7 +28,7 @@ class App extends Component {
       return <Preloader />;
     } else
       return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter >
           <div className="app_wrapper">
             <HeaderContainer />
             <Nav />
@@ -42,7 +42,7 @@ class App extends Component {
               >
                 <Routes>
                   <Route
-                    path="/profile/:profileId"
+                    path="/profile/:userId"
                     element={<ProfileContainer />}
                   />
                   <Route path="/dialogs/*" element={<DialogsContainer />} />

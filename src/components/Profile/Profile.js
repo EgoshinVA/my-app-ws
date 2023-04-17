@@ -6,7 +6,7 @@ const Profile = (props) => {
   return (
     <div className={classes.profile}>
       <img
-        src="https://phonoteka.org/uploads/posts/2021-04/1619251033_16-phonoteka_org-p-krasivii-chernii-fon-dlya-fotoshopa-21.jpg"
+        src="https://kartinkin.net/pics/uploads/posts/2022-08/1660786584_6-kartinkin-net-p-tragichnii-fon-krasivo-7.jpg"
         className={classes.back_img}
         alt="img"
       />
@@ -14,6 +14,9 @@ const Profile = (props) => {
         profile={props.profile}
         status={props.status}
         updateUserStatus={props.updateUserStatus}
+        isOwner={props.isOwner}
+        savePhoto={props.savePhoto}
+        setProfile={props.setProfile}
       />
       <PostsContainer />
     </div>
