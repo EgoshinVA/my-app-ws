@@ -6,7 +6,7 @@ import {
   getUsersThunkCreator,
   getUnfollowThunkCreator,
   getFollowThunkCreator,
-} from './../../redux/users-reducer';
+} from '../../redux/users-reducer';
 import { connect } from 'react-redux';
 import React from 'react';
 import Users from './Users';

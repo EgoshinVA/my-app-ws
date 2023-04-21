@@ -2,3 +2,32 @@
   border: solid red 2px;
   color: red;
 }
+
+.button_edit {
+  background: #303030;
+  color: #A9A9A9;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 0.6rem;
+  border: none;
+}
+
+.info {
+  color: #7f7f7f;
+  margin-left: 20px;
+}
+
+.text{
+  text-align: right;
+  clear: both;
+  float:left;
+  margin-right:15px;
+}
+
+.form{
+  width: 500px;
+}
+
+.item{
+  margin: 7px 0px;
+}

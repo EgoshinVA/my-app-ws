@@ -6,7 +6,7 @@ const Nav = () => {
     <nav className={classes.nav}>
       <div className={classes.item}>
         <NavLink
-          to="/profile/27293"
+          to="/profile"
           className={(navData) =>
             navData.isActive ? classes.active : classes.item
           }

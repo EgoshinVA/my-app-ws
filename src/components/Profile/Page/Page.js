@@ -37,7 +37,18 @@ const Page = (props) => {
                         alt="img"
                     />
                     {props.isOwner && (
-                        <input type={'file'} onChange={onMainPhotoChanged}/>
+                        <div>
+                            <div className={classes.input__wrapper}>
+                                <input onChange={onMainPhotoChanged} name="file" type="file" id="input__file" className={classes.input__file} multiple/>
+                                    <label htmlFor="input__file" className={classes.button}>
+                                        <span className={classes.button_text}>Выберите файл</span>
+                                    </label>
+                            </div>
+
+
+                        </div>
+
+
                     )}
                 </div>
                 {editMode ?
@@ -53,13 +64,12 @@ const Page = (props) => {
                         goToEditMode={() => {
                             setEditMode(true);
                         }}
+                        status={props.status}
+                        updateUserStatus={props.updateUserStatus}
                     />
                 }
             </div>
-            <StatusProfileWithHooks
-                status={props.status}
-                updateUserStatus={props.updateUserStatus}
-            />
+
         </>
     );
 };
@@ -67,7 +77,7 @@ const Page = (props) => {
 const ProfileInfo = (props) => {
   return (
     <div className={classes.info}>
-      {props.isOwner && <button onClick={props.goToEditMode}>Edit</button>}
+      {props.isOwner && <button className={classes.button_edit} onClick={props.goToEditMode}>edit</button>}
       <div>
         <b>Full name : </b>
         {props.profile.fullName}
@@ -95,6 +105,12 @@ const ProfileInfo = (props) => {
           );
         })}
       </div>
+        <b>Status : </b>
+            <StatusProfileWithHooks
+                status={props.status}
+                updateUserStatus={props.updateUserStatus}
+            />
+
     </div>
   );
 };
