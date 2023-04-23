@@ -20,8 +20,11 @@ let reducers = combineReducers({
   app: appReducer,
 });
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+type reducersType = typeof reducers;
+export type appStateType = ReturnType<reducersType>
 
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+//@ts-ignore
 window.store = store;
 
 export default store;

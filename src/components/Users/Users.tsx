@@ -2,8 +2,20 @@ import React from 'react';
 import Paginator from '../common/Paginator/Paginator';
 import User from './User/User';
 import classes from './Users.module.css';
+import {usersType} from "../../redux/users-reducer";
 
-let Users = (props) => {
+type propsType = {
+    onPageChanged: (pageNumber: number) => void
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    users: Array<usersType>
+    followingInProgress: Array<number>
+    getUnfollowThunkCreator: (userNumber: number) => void
+    getFollowThunkCreator: (userNumber: number) => void
+}
+
+let Users: React.FC<propsType> = (props) => {
   return (
     <div>
       <Paginator
@@ -23,26 +35,16 @@ let Users = (props) => {
           followed={
             user.followed ? (
               <button
-                disabled={props.followingInProgress.some(
-                  (id) => id === user.id
-                )}
+                disabled={props.followingInProgress.some((id) => id === user.id)}
                 className={classes.btn}
-                onClick={() => {
-                  props.getUnfollowThunkCreator(user.id);
-                }}
-              >
+                onClick={() => {props.getUnfollowThunkCreator(user.id);}}>
                 unfollow
               </button>
             ) : (
               <button
-                disabled={props.followingInProgress.some(
-                  (id) => id === user.id
-                )}
+                disabled={props.followingInProgress.some((id) => id === user.id)}
                 className={classes.btn}
-                onClick={() => {
-                  props.getFollowThunkCreator(user.id);
-                }}
-              >
+                onClick={() => {props.getFollowThunkCreator(user.id);}}>
                 follow
               </button>
             )

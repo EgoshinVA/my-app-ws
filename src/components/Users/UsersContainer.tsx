@@ -1,11 +1,8 @@
 import {
-  follow,
-  unfollow,
-  setCurrentPage,
-  followInProgress,
-  getUsersThunkCreator,
-  getUnfollowThunkCreator,
-  getFollowThunkCreator,
+    setCurrentPage,
+    getUsersThunkCreator,
+    getUnfollowThunkCreator,
+    getFollowThunkCreator, usersType,
 } from '../../redux/users-reducer';
 import { connect } from 'react-redux';
 import React from 'react';
@@ -21,8 +18,23 @@ import {
   getIsFetching,
   getFollowingInProgress,
 } from './../../redux/users-selectors';
+import {appStateType} from "../../redux/redux-store";
 
-class UsersAPIComponent extends React.Component {
+type propsType = {
+    getUsersThunkCreator: (currentPage: number, pageSize: number) => void
+    currentPage: number
+    pageSize: number
+    setCurrentPage: (number: number) => void
+    totalUsersCount: number
+    users: Array<usersType>
+    followingInProgress: Array<number>
+    getUnfollowThunkCreator: (userNumber: number) => void
+    getFollowThunkCreator: (userNumber: number) => void
+    isFetching: boolean
+}
+type stateType={}
+
+class UsersAPIComponent extends React.Component<propsType, stateType> {
   componentDidMount() {
     this.props.getUsersThunkCreator(
       this.props.currentPage,
@@ -44,9 +56,6 @@ class UsersAPIComponent extends React.Component {
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged}
           users={this.props.users}
-          unfollow={this.props.unfollow}
-          follow={this.props.follow}
-          followInProgress={this.props.followInProgress}
           followingInProgress={this.props.followingInProgress}
           getUnfollowThunkCreator={this.props.getUnfollowThunkCreator}
           getFollowThunkCreator={this.props.getFollowThunkCreator}
@@ -57,9 +66,10 @@ class UsersAPIComponent extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: appStateType) => {
   return {
-    users: getUsersSuper(state),
+    users: state.usersPage.user,
+    //users: getUsersSuper(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
@@ -71,10 +81,7 @@ let mapStateToProps = (state) => {
 export default compose(
   withAuthRedirect,
   connect(mapStateToProps, {
-    follow,
-    unfollow,
     setCurrentPage,
-    followInProgress,
     getUsersThunkCreator,
     getUnfollowThunkCreator,
     getFollowThunkCreator,

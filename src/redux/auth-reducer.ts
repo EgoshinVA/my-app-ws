@@ -1,5 +1,5 @@
 import {stopSubmit} from 'redux-form';
-import {authAPI, getCaptcha} from './../api/api';
+import {authAPI} from './../api/api';
 
 const SET_AUTH_DATA = 'SET_AUTH_DATA';
 const SET_CAPTCHA = 'SET_CAPTCHA';
@@ -18,11 +18,11 @@ const authReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case SET_AUTH_DATA:
             return {
-                ...state, ...action.data, captcha: false
+                ...state, ...action.data,
             };
         case SET_CAPTCHA:
             return {
-                ...state, captcha: action.captcha
+                ...state, captcha: action.captcha,
             }
         default:
             return state;
@@ -86,7 +86,7 @@ export const logout = () => async (dispatch: any) => {
 };
 
 export const captchaTC = () => async (dispatch: any) => {
-    let response = await getCaptcha();
+    let response = await authAPI.getCaptcha();
     dispatch(setCaptcha(response.data.url))
 }
 
