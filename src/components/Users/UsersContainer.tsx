@@ -1,5 +1,5 @@
 import {
-    setCurrentPage,
+    usersActions,
     getUsersThunkCreator,
     getUnfollowThunkCreator,
     getFollowThunkCreator, usersType,
@@ -9,7 +9,7 @@ import React from 'react';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import { compose } from 'redux';
-import { withAuthRedirect } from './../../hoc/withAuthRedirect';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import {
   getUsersSuper,
   getPageSize,
@@ -17,24 +17,30 @@ import {
   getCurrentPage,
   getIsFetching,
   getFollowingInProgress,
-} from './../../redux/users-selectors';
+} from '../../redux/users-selectors';
 import {appStateType} from "../../redux/redux-store";
 
-type propsType = {
-    getUsersThunkCreator: (currentPage: number, pageSize: number) => void
+type mapStatePropsType = {
+    isFetching: boolean
     currentPage: number
     pageSize: number
-    setCurrentPage: (number: number) => void
     totalUsersCount: number
     users: Array<usersType>
     followingInProgress: Array<number>
+}
+
+type mapDispatchPropsType = {
     getUnfollowThunkCreator: (userNumber: number) => void
     getFollowThunkCreator: (userNumber: number) => void
-    isFetching: boolean
+    setCurrentPage: (number: number) => void
+    getUsersThunkCreator: (currentPage: number, pageSize: number) => void
 }
-type stateType={}
 
-class UsersAPIComponent extends React.Component<propsType, stateType> {
+type ownPropsType = {}
+
+type propsType = mapStatePropsType & mapDispatchPropsType & ownPropsType
+
+class UsersContainer extends React.Component<propsType> {
   componentDidMount() {
     this.props.getUsersThunkCreator(
       this.props.currentPage,
@@ -42,7 +48,7 @@ class UsersAPIComponent extends React.Component<propsType, stateType> {
     );
   }
 
-  onPageChanged = (p) => {
+  onPageChanged = (p: number) => {
     this.props.setCurrentPage(p);
     this.props.getUsersThunkCreator(p, this.props.pageSize);
   };
@@ -66,10 +72,9 @@ class UsersAPIComponent extends React.Component<propsType, stateType> {
   }
 }
 
-let mapStateToProps = (state: appStateType) => {
+let mapStateToProps = (state: appStateType): mapStatePropsType => {
   return {
-    users: state.usersPage.user,
-    //users: getUsersSuper(state),
+    users: getUsersSuper(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
@@ -80,10 +85,10 @@ let mapStateToProps = (state: appStateType) => {
 
 export default compose(
   withAuthRedirect,
-  connect(mapStateToProps, {
-    setCurrentPage,
+  connect<mapStatePropsType, mapDispatchPropsType, ownPropsType, appStateType>(mapStateToProps, {
+    setCurrentPage: usersActions.setCurrentPage,
     getUsersThunkCreator,
     getUnfollowThunkCreator,
     getFollowThunkCreator,
   })
-)(UsersAPIComponent);
+)(UsersContainer);

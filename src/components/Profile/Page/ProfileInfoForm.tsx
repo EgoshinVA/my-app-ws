@@ -1,4 +1,4 @@
-import {reduxForm} from 'redux-form';
+import {InjectedFormProps, reduxForm} from 'redux-form';
 import {
   Input,
   Textarea,
@@ -6,8 +6,20 @@ import {
 } from '../../common/Controls/FormsControls';
 import React from 'react';
 import classes from "../../common/Controls/FormsControls.module.css";
+import {contactsType, profileType} from "../../../redux/profile-reducer";
 
-const ProfileInfoForm = (props) => {
+export type profileInfoFormValuesType = {
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    aboutMe: string | null
+    contacts: contactsType
+}
+type profileInfoFormOwnProps = {
+    profile: profileType
+}
+
+const ProfileInfoForm: React.FC<InjectedFormProps<profileInfoFormValuesType, profileInfoFormOwnProps> & profileInfoFormOwnProps> = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={classes.info}>
             <div className={classes.form}>
@@ -40,7 +52,7 @@ const ProfileInfoForm = (props) => {
     );
 };
 
-const ProfileInfoFormRedux = reduxForm({form: 'AddNewInfoForm'})(
+const ProfileInfoFormRedux = reduxForm<profileInfoFormValuesType, profileInfoFormOwnProps>({form: 'AddNewInfoForm'})(
     ProfileInfoForm
 );
 

@@ -5,14 +5,15 @@ import classes from './Users.module.css';
 import {usersType} from "../../redux/users-reducer";
 
 type propsType = {
-    onPageChanged: (pageNumber: number) => void
     totalUsersCount: number
     pageSize: number
     currentPage: number
     users: Array<usersType>
     followingInProgress: Array<number>
+
     getUnfollowThunkCreator: (userNumber: number) => void
     getFollowThunkCreator: (userNumber: number) => void
+    onPageChanged: (pageNumber: number) => void
 }
 
 let Users: React.FC<propsType> = (props) => {

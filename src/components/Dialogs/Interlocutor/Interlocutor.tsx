@@ -1,7 +1,13 @@
 import classes from './Interlocutor.module.css';
 import { NavLink } from 'react-router-dom';
+import React from "react";
 
-const Interlocutor = (props) => {
+type propsType = {
+    id: number
+    name: string
+}
+
+const Interlocutor: React.FC<propsType> = (props) => {
   return (
     <div className={classes.interlocutor}>
       <div className={classes.circle}></div>

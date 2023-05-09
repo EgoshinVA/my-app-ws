@@ -1,16 +1,22 @@
 import classes from './Posts.module.css';
 import Post from './Post/Post';
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import { Textarea } from '../../common/Controls/FormsControls';
 import { requiredField} from "../../../utils/validators/validators";
+import {postDataType} from "../../../redux/profile-reducer";
 
-const Posts = (props) => {
+type propsTypes = {
+    post: Array<postDataType>
+    addPost: (values: string) => void
+}
+
+const Posts: React.FC<propsTypes> = (props) => {
   let postElements = props.post.map((post) => (
     <Post key={post.id} desc={post.desc} likes={post.likes} />
   ));
 
-  const addNewPost = (values) => {
+  const addNewPost = (values: addPostValuesType) => {
     props.addPost(values.newPostInput);
   };
 
@@ -25,7 +31,11 @@ const Posts = (props) => {
   );
 };
 
-const AddNewPostForm = (props) => {
+type addPostValuesType = {
+    newPostInput: string
+}
+
+const AddNewPostForm: React.FC<InjectedFormProps<addPostValuesType>> = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <Field
@@ -40,7 +50,7 @@ const AddNewPostForm = (props) => {
   );
 };
 
-const AddNewPostFormRedux = reduxForm({form: 'AddNewPostForm'})(
+const AddNewPostFormRedux = reduxForm<addPostValuesType>({form: 'AddNewPostForm'})(
   AddNewPostForm
 );
 

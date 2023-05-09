@@ -2,12 +2,21 @@ import classes from './Dialogs.module.css';
 import Interlocutor from './Interlocutor/Interlocutor';
 import Messages from './Messages/Messages';
 import React from 'react';
-import {Field, reduxForm} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../common/Controls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
+import {dialogType, messageType} from "../../redux/dialogs-reducer";
 
+type propsType = {
+    dialogs: Array<dialogType>
+    messages: Array<messageType>
+    addMessage: (value: string) => void
+}
+type dialogsFormValuesType = {
+    newMessageBody: string
+}
 
-const Dialogs = (props) => {
+const Dialogs: React.FC<propsType> = (props) => {
   let dialogElements = props.dialogs.map((user) => (
     <Interlocutor key={user.id} name={user.name} id={user.id} />
   ));
@@ -16,7 +25,7 @@ const Dialogs = (props) => {
     <Messages key={message.id} name={message.id} message={message.message} />
   ));
 
-  const addNewMessage = (values) => {
+  const addNewMessage = (values: dialogsFormValuesType) => {
     props.addMessage(values.newMessageBody);
   };
 
@@ -31,7 +40,7 @@ const Dialogs = (props) => {
   );
 };
 
-const AddMessageForm = (props) => {
+const AddMessageForm: React.FC<InjectedFormProps<dialogsFormValuesType>> = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -50,7 +59,7 @@ const AddMessageForm = (props) => {
   );
 };
 
-const AddMessageFormRedux = reduxForm({ form: 'dialogNewMessageForm' })(
+const AddMessageFormRedux = reduxForm<dialogsFormValuesType>({ form: 'dialogNewMessageForm' })(
   AddMessageForm
 );
 

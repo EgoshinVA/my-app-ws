@@ -1,8 +1,21 @@
 import classes from './Profile.module.css';
 import PostsContainer from './Posts/PostsContainer';
 import Page from './Page/Page';
+import React from "react";
+import {profileType} from "../../redux/profile-reducer";
+import {profileInfoFormValuesType} from "./Page/ProfileInfoForm";
 
-const Profile = (props) => {
+type propsType = {
+    profile: profileType | null
+    status: string
+    isOwner: boolean
+
+    updateUserStatus: (status: string) => void
+    savePhoto: (file: any) => void
+    setProfile: (formData: profileInfoFormValuesType) => void
+}
+
+const Profile: React.FC<propsType> = (props) => {
   return (
     <div className={classes.profile}>
       <img
