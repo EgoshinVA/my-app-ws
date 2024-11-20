@@ -3,7 +3,7 @@ import classes from './Page.module.css';
 import StatusProfileWithHooks from './StatusProfileWithHooks';
 import ProfileInfoFormRedux, {profileInfoFormValuesType} from './ProfileInfoForm';
 import React, {ChangeEvent, useState} from 'react';
-import {profileType} from "../../../redux/profile-reducer";
+import {contactsType, profileType} from "../../../redux/profile-reducer";
 
 type propsType = {
     profile: profileType | null
@@ -116,12 +116,12 @@ const ProfileInfo: React.FC<profileInfoPropsType> = (props) => {
             </div>
             <div>
                 <b>Contacts : </b>
-                {Object.keys(props.profile.contacts).map((key: string) => {
+                {Object.keys(props.profile.contacts).map((key) => {
                     return (
                         <Contact
                             key={key}
                             contactTitle={key}
-                            contactValue={props.profile.contacts[key]}
+                            contactValue={props.profile.contacts[key as keyof contactsType]}
                         />
                     );
                 })}
